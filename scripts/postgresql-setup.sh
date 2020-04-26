@@ -29,7 +29,7 @@ function check_pgpass_file {
     exit 1
     fi
 
-  databasename=$(sed --regexp-extended 's/[^:]*:[^:]*://;s/:.*//' "${PGPASSFILE}")
+  databasename=$(cut -d : -f 3 "${PGPASSFILE}")
   export databasename
 }
 
